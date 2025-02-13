@@ -1,0 +1,72 @@
+-------------------------------------------------------------------------------
+Test set: com.order.management.ServiceImpl.OrderManagementServiceTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 3, Errors: 1, Skipped: 0, Time elapsed: 0.876 s <<< FAILURE! -- in com.order.management.ServiceImpl.OrderManagementServiceTest
+com.order.management.ServiceImpl.OrderManagementServiceTest.testUpdateOrder_Success -- Time elapsed: 0.654 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <John Doe> but was: <null>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.order.management.ServiceImpl.OrderManagementServiceTest.testUpdateOrder_Success(OrderManagementServiceTest.java:110)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+com.order.management.ServiceImpl.OrderManagementServiceTest.testDeleteOrder_NotFound -- Time elapsed: 0.020 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: Unexpected exception type thrown, expected: <com.order.management.exception.ResourceNotFoundException> but was: <java.lang.RuntimeException>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:67)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:35)
+	at org.junit.jupiter.api.Assertions.assertThrows(Assertions.java:3128)
+	at com.order.management.ServiceImpl.OrderManagementServiceTest.testDeleteOrder_NotFound(OrderManagementServiceTest.java:141)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+Caused by: java.lang.RuntimeException: Order not found
+	at com.order.management.ServiceImpl.OrderManagementServiceImpl.lambda$deleteOrder$3(OrderManagementServiceImpl.java:108)
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)
+	at com.order.management.ServiceImpl.OrderManagementServiceImpl.deleteOrder(OrderManagementServiceImpl.java:108)
+	at com.order.management.ServiceImpl.OrderManagementServiceTest.lambda$testDeleteOrder_NotFound$3(OrderManagementServiceTest.java:141)
+	at org.junit.jupiter.api.AssertThrows.assertThrows(AssertThrows.java:53)
+	... 6 more
+
+com.order.management.ServiceImpl.OrderManagementServiceTest.testCreateOrder_Success -- Time elapsed: 0.016 s <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: <null> but was: <John Doe>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1145)
+	at com.order.management.ServiceImpl.OrderManagementServiceTest.testCreateOrder_Success(OrderManagementServiceTest.java:73)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+com.order.management.ServiceImpl.OrderManagementServiceTest.testGetOrderById_Success -- Time elapsed: 0.031 s <<< ERROR!
+org.mockito.exceptions.misusing.PotentialStubbingProblem: 
+
+Strict stubbing argument mismatch. Please check:
+ - this invocation of 'findById' method:
+    orderRepository.findById(2L);
+    -> at com.order.management.ServiceImpl.OrderManagementServiceImpl.getOrderById(OrderManagementServiceImpl.java:62)
+ - has following stubbing(s) with different arguments:
+    1. orderRepository.findById(1L);
+      -> at com.order.management.ServiceImpl.OrderManagementServiceTest.testGetOrderById_Success(OrderManagementServiceTest.java:81)
+Typically, stubbing argument mismatch indicates user mistake when writing tests.
+Mockito fails early so that you can debug potential problem easily.
+However, there are legit scenarios when this exception generates false negative signal:
+  - stubbing the same method multiple times using 'given().will()' or 'when().then()' API
+    Please use 'will().given()' or 'doReturn().when()' API for stubbing.
+  - stubbed method is intentionally invoked with different arguments by code under test
+    Please use default or 'silent' JUnit Rule (equivalent of Strictness.LENIENT).
+For more information see javadoc for PotentialStubbingProblem class.
+	at com.order.management.ServiceImpl.OrderManagementServiceImpl.getOrderById(OrderManagementServiceImpl.java:62)
+	at com.order.management.ServiceImpl.OrderManagementServiceTest.testGetOrderById_Success(OrderManagementServiceTest.java:83)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
